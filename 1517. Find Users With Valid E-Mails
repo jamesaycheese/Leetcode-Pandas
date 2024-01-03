@@ -7,7 +7,7 @@ users = pd.DataFrame(data, columns=['user_id', 'name', 'mail']).astype({'user_id
 import pandas as pd
 
 def valid_emails(users: pd.DataFrame) -> pd.DataFrame:
-    users=users[users['mail'].str.match(r'^[A-Za-z][A-Za-z0-9_\.\-]*@leetcode(\?com)?\.com$')]
+    users=users[users['mail'].str.match(r'^[A-Za-z][A-Za-z0-9_\.\-]*@leetcode\.com$')]
 
     return users
 
