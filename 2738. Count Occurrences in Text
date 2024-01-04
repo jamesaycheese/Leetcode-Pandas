@@ -1,0 +1,14 @@
+import pandas as pd
+
+data = [['draft1.txt', 'The stock exchange predicts a bull market which would make many investors happy.'], ['draft2.txt', 'The stock exchange predicts a bull market which would make many investors happy, but analysts warn of possibility of too much optimism and that in fact we are awaiting a bear market.'], ['final.txt', 'The stock exchange predicts a bull market which would make many investors happy, but analysts warn of possibility of too much optimism and that in fact we are awaiting a bear market. As always predicting the future market is an uncertain game and all investors should follow their instincts and best practices.']]
+files = pd.DataFrame(data, columns=['file_name', 'content']).astype({'file_name':'object', 'content':'object'})
+
+
+import pandas as pd
+
+def count_occurrences(files: pd.DataFrame) -> pd.DataFrame:
+    bullcnt = files['content'].str.contains(r'\sbull\s').sum()
+    bearcnt = files['content'].str.contains(r'\sbear\s').sum()
+    return pd.DataFrame({'word':['bull', 'bear'], 'count' : [bullcnt, bearcnt]})
+
+print(count_occurrences(files))
